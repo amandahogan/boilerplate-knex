@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>EDA Phase 1 Express Boilerplate</title>
-  </head>
-  <body>
+
     <ul>
     {{#each users}}
-      <li>{{name}} ({{email}})</li>
+      <li><a href="/profile/{{id}}">{{name}}</a> : ({{email}})</li>
     {{/each}}
     </ul>
-  </body>
-</html>
+
+    <form class="form-inline" action="/animals" method="POST">
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" name="name" id="inputName" placeholder="Elephant Shrew">
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" name="email" id="inputEmail" placeholder="elephant.shrew@example.com">
+      </div>
+      <div class="form-group">
+        <label for="inputImage">Image URL</label>
+        <input type="url" class="form-control" name="image" id="inputImage" placeholder="https://images/Large.jpg">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Animal</button>
+    </form>

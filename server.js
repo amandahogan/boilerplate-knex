@@ -12,12 +12,15 @@ module.exports = server
 
 // Middleware
 
-server.engine('hbs', hbs({extname: 'hbs'}))
+server.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'main.hbs'}))
 server.set('view engine', 'hbs')
 server.set('views', path.join(__dirname, 'views'))
 server.use(bodyParser.urlencoded({ extended: true }))
+server.use(express.static('public'))
 
 // Routes
 
-server.get('/', index.get)
+server.get('/', index.getUsers)
+server.get('/profile/:id', index.getProfile)
 
+server.post('/animals', index.postUser)
